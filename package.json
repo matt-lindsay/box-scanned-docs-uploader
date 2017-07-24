@@ -1,0 +1,22 @@
+{
+  "name": "box-scanned-docs-uploader",
+  "version": "1.0.0",
+  "description": "A tool to search for existing folders and load newly scanned content into them, updating existing case files.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-lindsay/box-scanned-docs-uploader.git"
+  },
+  "author": "matt-lindsay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matt-lindsay/box-scanned-docs-uploader/issues"
+  },
+  "homepage": "https://github.com/matt-lindsay/box-scanned-docs-uploader#readme",
+  "dependencies": {
+    "box-node-sdk": "^1.7.0"
+  }
+}
