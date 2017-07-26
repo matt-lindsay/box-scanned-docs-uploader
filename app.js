@@ -23,7 +23,10 @@ fs.readFile(inputData, 'utf8', function (err, data) {
             // Search Box for a particular folder.
             client.search.query(records[0], { type: 'folder' }, function (err, jsonData) {
                 // Log error e.g. not authorised, doesn't exist or something else.
-                if (err) console.log(err); // TODO else proceed with upload.
+                if (err) { // TODO handle errors.
+                    console.log('>>> Error \n' + err);
+                    //logger();
+                }
                 
                 // Obtain the number of folders found matching the search case number (records[0]).
                 let recordCount = jsonData.total_count;
@@ -43,8 +46,12 @@ fs.readFile(inputData, 'utf8', function (err, data) {
                     
                     // Upload the file to Box.
                     client.files.uploadFile(destination, filename, stream, function (err) {
-                        if (err) console.log(err);
-                        console.log('>>> Upload complete: ' + filename);
+                        if (err) {
+                            console.log('>>> Error: ' + filename + '\n' + err);
+                            logger(err + ',' + item + '\n');
+                        } else {
+                            console.log('>>> Upload complete: ' + filename);   
+                        }
                     });
                 } else if (recordCount > 1) { // If there is more than one match segregate records for separate intervention.
                     console.log('>>> The search criteria is to vague: ' + records[0]);
